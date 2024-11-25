@@ -26,7 +26,6 @@ jobs:
         format: "${major}.${minor}.${patch}-prerelease-${increment}"
       id: semantic_version
             
-
     - name: Docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
@@ -38,14 +37,14 @@ jobs:
       env:
         NEW_VERSION: ${{steps.semantic_version.outputs.version}}
       run: |
-        docker build -t katthacar/docker-graphql:${{NEW_VERSION}} .
+        docker build -t katthacar/docker-graphql:$NEW_VERSION .
         docker build -t katthacar/docker-graphql:latest .
 
     - name: Push Docker Image
       env:
         NEW_VERSION: ${{steps.semantic_version.outputs.version}}
       run: |
-        docker push katthacar/docker-graphql:${{NEW_VERSION}}
+        docker push katthacar/docker-graphql:$NEW_VERSION
         docker push katthacar/docker-graphql:latest
 
     # - name: Build the Docker image
