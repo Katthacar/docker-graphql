@@ -23,7 +23,7 @@ jobs:
       with:
         major_pattern: "major:"
         minor_pattern: "feature:"
-        format: "${major}.${minor}.${patch}-prerelease${increment}"
+        format: "${major}.${minor}.${patch}-prerelease-${increment}"
       id: semantic_version
             
 
